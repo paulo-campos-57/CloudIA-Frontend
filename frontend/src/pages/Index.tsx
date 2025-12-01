@@ -1,3 +1,4 @@
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 
 export default function Index() {
@@ -10,8 +11,8 @@ export default function Index() {
                     <p className="text-lg text-center max-w-2xl font-mono">
                         Sua fonte instantânea de conhecimento em Cloud Computing. Nossa API utiliza a inteligência do Gemini para responder a qualquer tópico sobre a nuvem. Pergunte e aprenda!
                     </p>
-                    
                 </div>
+                <Footer />
             </div>
         </>
     );

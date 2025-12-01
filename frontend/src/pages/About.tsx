@@ -1,3 +1,4 @@
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 
 export default function About() {
@@ -5,7 +6,6 @@ export default function About() {
         <>
             <div className="flex flex-col min-h-screen w-screen bg-gradient-to-b from-slate-900 via-purple-900 to-slate-900 text-white">
                 <Header />
-
                 <div className="flex-1 flex flex-col items-center px-4 py-12 overflow-y-auto">
                     <div className="w-full max-w-7xl space-y-12">
 
@@ -107,9 +107,9 @@ export default function About() {
                                 </a>
                             </div>
                         </div>
-
                     </div>
                 </div>
+                <Footer />
             </div>
         </>
     );
