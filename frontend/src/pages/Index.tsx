@@ -10,7 +10,16 @@ export default function Index() {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const API_URL = "/api/assistente/explicar";
+    const getApiUrl = () => {
+        const BASE_API_URL = "https://cloudia-ljca.onrender.com/api/assistente/explicar";
+
+        if (window.location.hostname === 'localhost' || window.location.hostname.match(/^(\d{1,3}\.){3}\d{1,3}$/)) {
+            return "/api/assistente/explicar";
+        }
+        return BASE_API_URL;
+    };
+
+    const API_URL = getApiUrl();
 
     const handleSubmit = useCallback(async (e: React.FormEvent) => {
         e.preventDefault();
@@ -41,6 +50,7 @@ export default function Index() {
                     console.log(`Tentativa ${attempt + 1}: Aguardando ${delay}ms...`);
                 }
 
+                // A requisição usa a API_URL resolvida por getApiUrl()
                 const response = await fetch(API_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -66,7 +76,7 @@ export default function Index() {
                 console.error(`Falha na tentativa ${attempt + 1}:`, err);
                 attempt++;
                 if (attempt >= maxRetries) {
-                    setError("Falha ao conectar-se ao CloudIA após várias tentativas. Por favor, verifique a URL da API ou tente novamente mais tarde.");
+                    setError("Falha na comunicação com o CloudIA. O servidor pode estar lento ou indisponível. Por favor, tente novamente.");
                     setExplanation(null);
                 }
             }
@@ -122,8 +132,8 @@ export default function Index() {
                         <button
                             type="submit"
                             className={`w-full flex items-center justify-center px-6 py-3 font-mono font-bold rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 ${isLoading
-                                    ? 'bg-slate-700 text-slate-400 cursor-not-allowed'
-                                    : 'bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white hover:scale-[1.02] hover:shadow-lg hover:shadow-purple-500/50'
+                                ? 'bg-slate-700 text-slate-400 cursor-not-allowed'
+                                : 'bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white hover:scale-[1.02] hover:shadow-lg hover:shadow-purple-500/50'
                                 }`}
                             disabled={isLoading}
                         >
