@@ -31,7 +31,7 @@ This is the CloudIA frontend, a web application that allows users to ask questio
 
 The frontend is hosted on Vercel:
 
-**Production URL:** `https://your-frontend.vercel.app`
+**Production URL:** `https://cloud-ia-frontend.vercel.app`
 
 ## Technologies
 
@@ -287,7 +287,7 @@ Este é o frontend do CloudIA, uma aplicação web que permite aos usuários faz
 
 O frontend está hospedado no Vercel:
 
-**URL de Produção:** `https://seu-frontend.vercel.app`
+**URL de Produção:** `https://cloud-ia-frontend.vercel.app`
 
 ## Tecnologias
 
